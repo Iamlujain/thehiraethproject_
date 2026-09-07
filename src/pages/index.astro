@@ -16,100 +16,129 @@ const posts = (await getCollection('blog')).sort(
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				width: 100%;
-				aspect-ratio: 16 / 9; 
-				object-fit: cover; 
-				border-radius: 4px; 
-				margin-bottom: 1rem;
-				box-shadow: 0 4px 12px rgba(46, 41, 16, 0.1); 
-}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-			.post-tags {
-	display: flex;
-	gap: 1rem; 
-	margin-top: 0.2rem;
-	flex-wrap: wrap;
-	justify-content: center; 
-
-.tag {
-	font-size: 0.65em; 
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	color: var(--sidebar-bg); 
-	font-weight: 700;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	transition: color 0.2s ease;
-	cursor: pointer; 
-}
-
-.tag:hover {
-	color: var(--text-main); 
-}
-}
-		</style>
+            /* 1. Grid & Layout */
+            main {
+                width: 960px;
+            }
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            ul li {
+                width: calc(50% - 1rem);
+                padding-bottom: 1rem;
+                transition: all 0.2s ease;
+            }
+            ul li * {
+                text-decoration: none;
+                transition: 0.2s ease;
+            }
+            
+            /* 2. Hero (First) Card Layout */
+            ul li:first-child {
+                width: 100%;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            ul li:first-child img {
+                width: 100%;
+            }
+            ul li:first-child .title {
+                font-size: 2.369rem;
+            }
+            
+            /* 3. Image & Link Resets */
+            ul li img {
+                width: 100%;
+                aspect-ratio: 16 / 9; 
+                object-fit: cover; 
+                border-radius: 4px; 
+                margin-bottom: 1rem;
+                box-shadow: 0 4px 12px rgba(46, 41, 16, 0.1); 
+            }
+            ul li a {
+                display: block;
+                text-decoration: none !important; 
+                border: none !important;
+            }
+            
+          /* 4. Typography Spacing (Primary Resting Colors) */
+		  .title {
+                margin: 0 0 0.2rem 0;
+                color: #5C4434; /* The vintage brown is back on the title */
+                line-height: 1.2;
+            }
+            .date {
+                margin: 0;
+                color: #6A7B58; /* The muted sage/olive green */
+                font-size: 0.85em;
+            }
+            .description {
+                margin: 0.5rem 0 0.8rem 0; 
+                font-size: 0.9em;
+                line-height: 1.4;
+                color: #6A7B58; /* The muted sage/olive green */
+            }
+            
+            /* 5. Master Hover States (Controls the whole card) */
+            ul li:hover {
+                border-bottom: 1px solid #3A2A20; /* Dark brown line at the bottom */
+            }
+            ul li:hover h4.title {
+                color: #3A2A20; /* Deepens the title's brown on hover */
+                transform: translateY(-3px); 
+            }
+            ul li:hover .date,
+            ul li:hover .description {
+                color: #48563A; /* Deepens the date/desc green on hover */
+            }
+            ul li:hover img {
+                box-shadow: var(--box-shadow);
+            }
+            /* 6. Tags */
+            .post-tags {
+                display: flex;
+                gap: 1rem; 
+                margin-top: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center; 
+            } /* <-- The missing bracket is fixed here! */
+            
+            .tag {
+                font-size: 0.65em; 
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--sidebar-bg); 
+                font-weight: 700;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                transition: color 0.2s ease;
+                cursor: pointer; 
+            }
+            .tag:hover {
+                color: var(--text-main); 
+            }
+            
+            /* 7. Mobile View */
+            @media (max-width: 720px) {
+                ul {
+                    gap: 0.5em;
+                }
+                ul li {
+                    width: 100%;
+                    text-align: center;
+                }
+                ul li:first-child {
+                    margin-bottom: 0;
+                }
+                ul li:first-child .title {
+                    font-size: 1.563em;
+                }
+            }
+        </style>
 	</head>
 	<body>
 		<Header />
@@ -119,16 +148,15 @@ const posts = (await getCollection('blog')).sort(
 					{
 						posts.map((post) => (
 						<li>
-	<!-- 1. The main link to the essay -->
 	<a href={`/blog/${post.id}/`}>
-		<img width={720} height={360} src={post.data.heroImage} alt="" />
-		<h4 class="title">{post.data.title}</h4>
-		<p class="date">
-			<FormattedDate date={post.data.pubDate} />
-		</p>
-	</a>
+    <img width={720} height={360} src={post.data.heroImage} alt="" />
+    <h4 class="title">{post.data.title}</h4>
+    <p class="date">
+        <FormattedDate date={post.data.pubDate} />
+    </p>
+    <p class="description">{post.data.description}</p>
+</a>
 	
-	<!-- 2. The tags sit OUTSIDE the main link -->
 	{post.data.tags && (
 		<div class="post-tags">
 			{post.data.tags.map((tag) => (
