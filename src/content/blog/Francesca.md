@@ -2,7 +2,8 @@
 title: 'Francesca In The Eyes Of Hozier'
 description: 'A retelling of Dantes Inferno through Unreal Unearth.'
 pubDate: 'Apr 14 2026'
-heroImage: '../../assets/blog-placeholder-3.jpg'
+heroImage: "https://i.ibb.co/jv2y70bx/Joseph-Noel-Paton-1821-1901-Dante-Meditating-the-Episode-of-Francesca-da-Rimini-and-Paolo-Malate.jpg"
+tags: ["Music", "Hozier", "Analysis"]
 ---
 
 In his pilgrimage through the circles of hell, Dante is led by his guide and friend, Virgil the poet, deeper into Inferno, having just left Limbo, and unto the second circle: Those punished for their lust.

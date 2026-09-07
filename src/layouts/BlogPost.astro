@@ -103,8 +103,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         sidebar.classList.add('open');
         clearHighlights(); // Clears any old highlights first
 
-        const targetId = trigger.getAttribute('data-target');
-        const lyricLine = document.getElementById(targetId);
+		const targetId = trigger.getAttribute('data-target') || '';
+		const lyricLine = document.getElementById(targetId);
         
         if (lyricLine) {
           lyricLine.classList.add('highlighted');

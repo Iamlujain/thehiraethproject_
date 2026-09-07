@@ -213,7 +213,7 @@ hr {
   transform: translateY(-50%);
   width: 25px;
   height: 50px;
-  background-color: var(--bg-color); /* Matches the cream paper */
+  background-color: var(--sidebar-bg);
   border: 1px solid var(--border-color);
   border-right: none;
   border-radius: 25px 0 0 25px;
