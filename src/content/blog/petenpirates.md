@@ -1,6 +1,6 @@
 ---
 title: "Picks From Pete & The Pirates"
-description: "And How It Shaped Teleman's Sound"
+description: "And How It Shaped Teleman's Sound."
 pubDate: "Feb 11, 2026"
 heroImage: "https://i.ibb.co/K8Y8Vzn/Screenshot-2.png"
 tags: ["Music", "Teleman", "Analysis"]

@@ -1,6 +1,6 @@
 ---
 title: "Miyazaki and Artificial Intelligence's Stain On Modern Day Art"
-description: "Paris Paloma’s Love Letter to Human Creation"
+description: "Paris Paloma’s Love Letter to Human Creation."
 pubDate: "Apr 14 2026"
 heroImage: "https://wash.co.uk/wp-content/uploads/2026/03/Still-2026-03-24-120009_1.95.1-scaled-e1774883196964.jpg"
 tags: ["Music", "Paris Paloma", "AI", "Analysis"]

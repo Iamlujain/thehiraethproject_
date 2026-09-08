@@ -1,7 +1,7 @@
 ---
-title: 'Francesca In The Eyes Of Hozier'
-description: 'A Retelling Of Dante's Inferno Through Unreal Unearth.'
-pubDate: 'Apr 14 2026'
+title: "Francesca In The Eyes Of Hozier"
+description: "A Retelling Of Dante's Inferno Through Unreal Unearth."
+pubDate: "Apr 14 2026"
 heroImage: "https://i.ibb.co/jv2y70bx/Joseph-Noel-Paton-1821-1901-Dante-Meditating-the-Episode-of-Francesca-da-Rimini-and-Paolo-Malate.jpg"
 tags: ["Music", "Hozier", "Analysis"]
 ---
