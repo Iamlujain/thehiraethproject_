@@ -5,32 +5,32 @@ pubDate: "Apr 14 2026"
 heroImage: "https://wash.co.uk/wp-content/uploads/2026/03/Still-2026-03-24-120009_1.95.1-scaled-e1774883196964.jpg"
 tags: ["Music", "Paris Paloma", "AI", "Analysis"]
 ---
-*Hayao Miyazaki*, the man behind the gorgeous Ghibli Studio spoke about AI-generated animation **"I feel it's an insult to life itself, and it's a sign that humans are losing faith in ourselves."** <br> 
+*Hayao Miyazaki*, the man behind the gorgeous Ghibli Studio spoke about AI-generated animation **"I feel it's an insult to life itself, and it's a sign that humans are losing faith in ourselves."** <br /> 
 
-So Paris follows his steps in condemning Artificial Intelligence for the loss of soul in art today, where artists and non-artists alike have the capability to have a picture or audio generated for them by a server across seas in mere seconds.<br>
+So Paris follows his steps in condemning Artificial Intelligence for the loss of soul in art today, where artists and non-artists alike have the capability to have a picture or audio generated for them by a server across seas in mere seconds.<br />
 
- She focuses on the idea that the act of creating art is art in itself. How art is the outcome of human feelings out in sensible forms that AI can never go far to mimic that no matter how good it can mimic an artstyle or a specific sound.<br>
+ She focuses on the idea that the act of creating art is art in itself. How art is the outcome of human feelings out in sensible forms that AI can never go far to mimic that no matter how good it can mimic an artstyle or a specific sound.<br />
 
- <span class="lyric-trigger" data-target="chorus">"Please don't let it take it from me<br>
+ <span class="lyric-trigger" data-target="chorus">"Please don't let it take it from me<br />
 Changes the colour of the air that I breath"</span>
 
-If you ask me about the lyrics, I'd point out how much I love the line<br>
-<span class="lyric-trigger" data-target="pre-chorus">"I'm not a violent person, but I make things with aggression<br>
- I'm not a violent person, but my work is one exception"</span><br> for how Paris is known for her music being aggressive and angry calling out the violence against women and cruel patriarchy in most of her songs.<br>
+If you ask me about the lyrics, I'd point out how much I love the line<br />
+<span class="lyric-trigger" data-target="pre-chorus">"I'm not a violent person, but I make things with aggression<br />
+ I'm not a violent person, but my work is one exception"</span><br /> for how Paris is known for her music being aggressive and angry calling out the violence against women and cruel patriarchy in most of her songs.<br />
 
- Themes that touch so many women that they can't relate if they're made by something robotic that doesn't understand the pain like another fellow woman does, it doesn't hit as much.<br>
+ Themes that touch so many women that they can't relate if they're made by something robotic that doesn't understand the pain like another fellow woman does, it doesn't hit as much.<br />
 
- However, examine the beauty the bridge is...<br>
-<span class="lyric-trigger" data-target="bridge">"I wasn't always tortured, I made art long before then<br>
-I call into the void until I lose my voice <br>
-But sometimes a cry reverberates back <br>
-A child with mud-caked hands or a prolific and obsessive older man <br>
-I'd do it unpaid, unseen, unthanked <br>
+ However, examine the beauty the bridge is...<br />
+<span class="lyric-trigger" data-target="bridge">"I wasn't always tortured, I made art long before then<br />
+I call into the void until I lose my voice <br />
+But sometimes a cry reverberates back <br />
+A child with mud-caked hands or a prolific and obsessive older man <br />
+I'd do it unpaid, unseen, unthanked <br />
 It's worth more than anything that I have"</span>
 
- Think back to your childhood, the joy of being gifted watercolours, of the wonder of holding the brush, creating with your hands, the molding of clay, the creation of paper... All the vast imagination you had concentrated on material till it meant something to you. <br>
+ Think back to your childhood, the joy of being gifted watercolours, of the wonder of holding the brush, creating with your hands, the molding of clay, the creation of paper... All the vast imagination you had concentrated on material till it meant something to you. <br />
 
-It touches you, might reflect on others and make them feel a different way, see the piece in another lens, have it make a stranger a different sense. <br>
+It touches you, might reflect on others and make them feel a different way, see the piece in another lens, have it make a stranger a different sense. <br />
 Art is precious and shouldn't be allowed to fall into the hands of the filthy, dead artificial databases 
 
 

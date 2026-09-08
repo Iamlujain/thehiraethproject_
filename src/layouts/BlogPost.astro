@@ -97,56 +97,78 @@ const { title, description, pubDate, updatedDate, heroImage, readTime } = Astro.
 		</main>
 		<Footer />
 		<script>
-  const triggers = document.querySelectorAll('.lyric-trigger');
-  const sidebar = document.getElementById('lyrics-panel');
-  const closeBtn = document.getElementById('close-sidebar');
-  const toggleBtn = document.getElementById('toggle-sidebar');
-
-  if (sidebar) {
-    
-    // The Reset Function: strips the highlight class from all lines
-    const clearHighlights = () => {
-      document.querySelectorAll('.lyric-line').forEach(line => {
-        line.classList.remove('highlighted');
-      });
-    };
-
-    // 1. Listen for clicks on your essay text
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        sidebar.classList.add('open');
-        clearHighlights(); // Clears any old highlights first
-
-		const targetId = trigger.getAttribute('data-target') || '';
-		const lyricLine = document.getElementById(targetId);
-        
-        if (lyricLine) {
-          lyricLine.classList.add('highlighted');
-          lyricLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-    });
-
-    // 2. Listen for the Pull Tab (Manual open/close)
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-        
-        // If the sidebar was just closed by clicking the tab, reset the text
-        if (!sidebar.classList.contains('open')) {
-          setTimeout(clearHighlights, 400); /* Waits for the slide animation to finish before clearing */
-        }
-      });
-    }
-
-    // 3. Listen for the X Close Button
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        setTimeout(clearHighlights, 400); /* Waits for the slide animation */
-      });
-    }
-  }
-</script>
+			const triggers = document.querySelectorAll('.lyric-trigger');
+			const sidebar = document.getElementById('lyrics-panel');
+			const closeBtn = document.getElementById('close-sidebar');
+			const toggleBtn = document.getElementById('toggle-sidebar');
+			const songSections = document.querySelectorAll<HTMLElement>('.song-section');
+		  
+			if (sidebar) {
+			  
+			  // The Reset Function: strips the highlight class from all lines
+			  const clearHighlights = () => {
+				document.querySelectorAll('.lyric-line').forEach(line => {
+				  line.classList.remove('highlighted');
+				});
+			  };
+		  
+			  // 1. Listen for clicks on your essay text
+			  triggers.forEach(trigger => {
+				trigger.addEventListener('click', () => {
+				  sidebar.classList.add('open');
+				  clearHighlights(); // Clears any old highlights first
+		  
+				  // Grab both attributes from the clicked text
+				  const targetSong = trigger.getAttribute('data-song');
+				  const targetVerse = trigger.getAttribute('data-verse');
+				  
+				  // Hide all songs, show ONLY the one they are reading about
+				  if (targetSong) {
+					songSections.forEach(section => {
+					  if (section.id === targetSong) {
+						section.style.display = 'block';
+					  } else {
+						section.style.display = 'none';
+					  }
+					});
+				  }
+		  
+				  // Find the verse and scroll to it
+				  if (targetVerse) {
+					const lyricLine = document.getElementById(targetVerse);
+					
+					if (lyricLine) {
+					  lyricLine.classList.add('highlighted');
+					  
+					  // 150ms delay lets the sidebar open and the song block render before scrolling
+					  setTimeout(() => {
+						lyricLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					  }, 150);
+					}
+				  }
+				});
+			  });
+		  
+			  // 2. Listen for the Pull Tab (Manual open/close)
+			  if (toggleBtn) {
+				toggleBtn.addEventListener('click', () => {
+				  sidebar.classList.toggle('open');
+				  
+				  // If the sidebar was just closed by clicking the tab, reset the text
+				  if (!sidebar.classList.contains('open')) {
+					setTimeout(clearHighlights, 400); /* Waits for the slide animation */
+				  }
+				});
+			  }
+		  
+			  // 3. Listen for the X Close Button
+			  if (closeBtn) {
+				closeBtn.addEventListener('click', () => {
+				  sidebar.classList.remove('open');
+				  setTimeout(clearHighlights, 400); /* Waits for the slide animation */
+				});
+			  }
+			}
+		  </script>
 	</body>
 </html>

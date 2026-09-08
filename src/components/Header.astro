@@ -5,7 +5,12 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2>
+      <a href="/">
+        <span class="olive-branch"></span>
+        {SITE_TITLE}
+      </a>
+    </h2>
 		<div class="right-menu">
       <div class="internal-links">
           <HeaderLink href="/">Home</HeaderLink>
@@ -41,21 +46,16 @@ import HeaderLink from './HeaderLink.astro';
     text-decoration: none;
     color: var(--accent);
   }
-  
-  /* 1. Nav keeps the title on the left and pushes the group to the right */
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
-  /* 2. The new container that groups tabs and socials */
   .right-menu {
     display: flex;
     align-items: center;
     gap: 2rem; 
   }
-  
   nav a {
     padding: 1.5em 0.5em;
     color: var(--text-muted);
@@ -85,9 +85,43 @@ import HeaderLink from './HeaderLink.astro';
   .social-links a:hover {
     color: var(--text-main);
   }
+
   @media (max-width: 720px) {
+    nav {
+      flex-direction: column;
+      padding-top: 1.2em;
+      gap: 0.5rem;
+    }
+    h2 {
+      font-size: 1.4em;
+    }
+    .right-menu {
+      gap: 1.5rem; 
+    }
+    nav a {
+      padding: 0.8em 0.2em;
+      font-size: 0.8em;
+    }
     .social-links {
       display: none;
     }
   } 
-  </style>
+
+  h2 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-main); 
+  }
+
+
+  .olive-branch {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: currentColor;
+    -webkit-mask: url('https://i.ibb.co/d427CpcK/olive-branch-1.png') no-repeat center / contain;
+    mask: url('https://i.ibb.co/d427CpcK/olive-branch-1.png') no-repeat center / contain;
+  }
+</style>
