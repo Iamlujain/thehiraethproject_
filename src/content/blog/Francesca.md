@@ -12,10 +12,7 @@ He describes the place, where he sees silent light, and screaming, howling, and 
 
 But two starlings of their own, tangled together as they're flown by wind have caught Dante’s eyes. He called for them kindly, and so they complied, and the woman spoke their story to him, as the man wept in grief.
 
-<span class="lyric-trigger" data-target="verse-1">“Do you think I'd give up?
-That this might've shook the love from me
-Or that I was on the brink?
-How could you think, darlin', I'd scare so easily?”</span>
+<span class="lyric-trigger" data-song="song-francesca" data-verse="verse-1">“Do you think I'd give up?<br>That this might've shook the love from me<br>Or that I was on the brink?<br>How could you think, darlin', I'd scare so easily?”</span>
 
 She was Francesca Da Rimini, the daughter of Ravenna’s lord, who one day heard she had a suitor arranged for her, a marriage of cementing political alliance. She peaked through her window, and saw a man walking into the premises, and immediately fell in love with him.
 
@@ -43,8 +40,7 @@ But an intervention happens, and Francesca throws herself in the between, taking
 Dante is overwhelmed by pity and sympathy for the two, he falls unconscious
 "And I fell as a dead body falls.”
 
-“If I could hold you for a minute
-I would do it again”
+<span class="lyric-trigger" data-song="song-francesca" data-verse="chorus">“If I could hold you for a minute<br>I would do it again”</span><br>
 On the tongue of Francesca da Rimini, Hozier rewrites the tragedy of a love so passionate that it never sees the forgiving peace, neither in life nor death.
 They were soulbound but yet not meant to be.
 The lovers robbed of a life they wouldn't have to hide in chambers to love each other, somewhere they could do it so loudly without shame.
@@ -53,81 +49,42 @@ Yet the devotion was above all, above God’s judgement and Giovanni’s rage an
 
 Even if given the chance to relive their ages, to maybe correct their sins and repent. They'd not change a single thing about how they did it. They'd love each other the same until their destined death, and repeat the cycle until the end of times if it meant being together, for whatever amount of time provided.
 
-<span class="lyric-trigger" data-target="verse-climax">"Heaven is not fit a love like you and I"</span>
+<span class="lyric-trigger" data-song="song-francesca" data-verse="verse-climax">"Heaven is not fit a love like you and I"</span><br>
 Accompanied by the harmonies, drums and scratch of guitar strings sending you off further and deeper into Inferno, the echoes of their love story left to history to tell again.
 
 <aside id="lyrics-panel" class="lyrics-sidebar">
-  <!-- The pull tab stays OUTSIDE the scrolling area -->
-  <button id="toggle-sidebar" class="pull-tab">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  </button>
-
-  <!-- We wrap the text in this new div -->
+<button id="toggle-sidebar" class="pull-tab">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+</button>
 <div class="lyrics-content">
-  <button id="close-sidebar" class="close-btn">×</button>
-  <h3 style="color: var(--accent); font-size: 1.2em; text-transform: uppercase;">Francesca</h3>
-  <h5 style="color: var(--text-main); font-size: 0.6em;">By Hozier</h5>
-
-  <!-- Just paste your raw text inside this block -->
-  <div class="lyrics-block">
-[Verse 1]
-<span id="verse-1" class="lyric-line">Do you think I'd give up?
-That this might've shook the love from me
-Or that I was on the brink?
-How could you think, darlin', I'd scare so easily?</span>
-Now that it's done
-There's not one thing that I would change
-My life was a storm since I was born
-How could I fear any hurricane?
-
-[Pre-Chorus]
-If someone asked me at the end
-
-[Chorus]
-I'd tell them, "Put me back in it" (Da-ah, darlin')
-I would do it again (Ah-ah, ah-ah)
-If I could hold you for a minute (Da-ah, darlin')
-I'd go through it again (Ah-ah, ah-ah)
-
-[Post-Chorus]
-I would still be surprised I could find you, darlin', in any life
-If I could hold you for a minute
-Da-ah, darlin', I would do it again (Ah-ah, ah-ah)
-
-[Verse 2]
-For all that was said
-Of where we'd end up at the end of it
-When the heart would cease, ours nеver knew peacе
-What good would it be on the far side of things?
-It was too soon
-When that part of you was ripped away
-A grip takin' hold like a cancer that grows
-Each piece of your body that it takes
-
-[Pre-Chorus]
-Though I know my heart would break
-
-[Chorus]
-I'd tell them, "Put me back in it" (Da-ah, darlin')
-I would do it again (Ah-ah, ah-ah)
-If I could hold you for a minute (Da-ah, darlin')
-I'd go through it again (Ah-ah, ah-ah)
-
-[Post-Chorus]
-I would still be surprised I could find you, darlin', in any life
-If I could hold you for a minute (Da-ah, darlin')
-I would do it again (Ah-ah, ah-ah)
-
-[Outro]
-I would not change it each time
-<span id="verse-climax" class="lyric-line">Heaven is not fit to house a love like you and I</span>
-I would not change it each time
-Heaven is not fit to house a love like you and I
-I would not change it each time
-Heaven is not fit to house a love
-Like you and I
-
-  </div>
+<button id="close-sidebar" class="close-btn">×</button>
+<div id="song-francesca" class="song-section">
+<h3 style="color: var(--bg-color, #F5EBE0); font-size: 1.2em; text-transform: uppercase;">Francesca</h3>
+<h5 style="color: var(--bg-color, #F5EBE0); font-size: 0.6em; opacity: 0.8;">By Hozier</h5>
+<div class="lyrics-block">
+[Verse 1]<br>
+<span id="verse-1" class="lyric-line">Do you think I'd give up?<br>That this might've shook the love from me<br>Or that I was on the brink?<br>How could you think, darlin', I'd scare so easily?</span><br>
+Now that it's done<br>There's not one thing that I would change<br>My life was a storm since I was born<br>How could I fear any hurricane?<br><br>
+[Pre-Chorus]<br>
+If someone asked me at the end<br><br>
+[Chorus]<br>
+I'd tell them, "Put me back in it" (Da-ah, darlin')<br>
+<span id="chorus" class="lyric-line">I would do it again (Ah-ah, ah-ah)<br>If I could hold you for a minute (Da-ah, darlin')<br>I'd go through it again (Ah-ah, ah-ah)</span><br><br>
+[Post-Chorus]<br>
+I would still be surprised I could find you, darlin', in any life<br>If I could hold you for a minute<br>Da-ah, darlin', I would do it again (Ah-ah, ah-ah)<br><br>
+[Verse 2]<br>
+For all that was said<br>Of where we'd end up at the end of it<br>When the heart would cease, ours nеver knew peacе<br>What good would it be on the far side of things?<br>It was too soon<br>When that part of you was ripped away<br>A grip takin' hold like a cancer that grows<br>Each piece of your body that it takes<br><br>
+[Pre-Chorus]<br>
+Though I know my heart would break<br><br>
+[Chorus]<br>
+I'd tell them, "Put me back in it" (Da-ah, darlin')<br>I would do it again (Ah-ah, ah-ah)<br>If I could hold you for a minute (Da-ah, darlin')<br>I'd go through it again (Ah-ah, ah-ah)<br><br>
+[Post-Chorus]<br>
+I would still be surprised I could find you, darlin', in any life<br>If I could hold you for a minute (Da-ah, darlin')<br>I would do it again (Ah-ah, ah-ah)<br><br>
+[Outro]<br>
+I would not change it each time<br>
+<span id="verse-climax" class="lyric-line">Heaven is not fit to house a love like you and I</span><br>
+I would not change it each time<br>Heaven is not fit to house a love like you and I<br>I would not change it each time<br>Heaven is not fit to house a love<br>Like you and I
+</div>
+</div>
+</div>
 </aside>

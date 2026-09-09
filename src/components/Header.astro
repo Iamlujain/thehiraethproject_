@@ -1,120 +1,122 @@
 ---
-import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+// Auto-count the tags for the menu
+const allPosts = await getCollection('blog');
+const tagCounts: Record<string, number> = {};
+allPosts.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  }
+});
+const tags = Object.keys(tagCounts).map(tag => ({ name: tag, count: tagCounts[tag] }));
 ---
 
 <header>
-	<nav>
-		<h2>
+  <nav>
+    <h2>
       <a href="/">
         <span class="olive-branch"></span>
         {SITE_TITLE}
       </a>
     </h2>
-		<div class="right-menu">
-      <div class="internal-links">
-          <HeaderLink href="/">Home</HeaderLink>
-          <HeaderLink href="/about">About</HeaderLink>
+    
+    <div class="header-actions">
+      <!-- 1. DESKTOP LINKS (Hidden on phone) -->
+      <div class="desktop-nav">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+        <div class="social-links">
+          <a href="https://instagram.com/amphitrite_5" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <div class="social-links">
-        <a href="https://instagram.com/amphitrite_5" target="_blank" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-          </svg>
-        </a>
+      
+      <!-- 2. BURGER BUTTON (Visible on all devices) -->
+      <button id="burger-menu" class="burger-btn" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 3. THE TRANSPARENT GREEN OVERLAY MENU -->
+  <div id="nav-overlay" class="dropdown-menu">
+    
+    <!-- Mobile Links (Only visible in drawer on phones) -->
+    <div class="mobile-nav">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+      <div class="social-links overlay-socials">
+        <!-- PASTE YOUR INSTAGRAM ICON LINK HERE AGAIN -->
+        
       </div>
+      <hr class="menu-divider" />
+    </div>
+    
+    <!-- The Tags (Visible to everyone) -->
+   <!-- The Tags (Visible to everyone) -->
+   <span class="tags-heading">Discover Topics</span>
+   <div class="tags-list">
+     {tags.map(tag => (
+       <a href={`/tag/${tag.name}`} class="dropdown-tag-chip">
+         #{tag.name} <span class="tag-count">({tag.count})</span>
+       </a>
+     ))}
+   </div>
+
   </div>
-	</nav>
 </header>
+
+<script>
+  // Script to open/close the green drawer
+  document.addEventListener('DOMContentLoaded', () => {
+    const burgerBtn = document.getElementById('burger-menu');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    if (burgerBtn && navOverlay) {
+      burgerBtn.addEventListener('click', () => {
+        navOverlay.classList.toggle('open');
+      });
+    }
+  });
+</script>
+
 <style>
   header {
     margin: 0;
     padding: 0 1em;
     background: var(--bg-color);
-    border-bottom: 1px solid var(--gray-dark);
+    border-bottom: 1px solid var(--border-color);
+    position: relative; /* Allows the dropdown to attach to the bottom */
   }
+  
   h2 {
     margin: 0;
     font-size: 1.3em;
     font-family: Georgia, "Times New Roman", serif;
     letter-spacing: 0.02em;
   }
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-    color: var(--accent);
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .right-menu {
-    display: flex;
-    align-items: center;
-    gap: 2rem; 
-  }
-  nav a {
-    padding: 1.5em 0.5em;
-    color: var(--text-muted);
-    border-bottom: 2px solid transparent;
-    text-decoration: none;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: color 0.2s ease, border-bottom-color 0.2s ease;
-  }
-  nav a:hover,
-  nav a.active {
-    color: var(--text-main);
-    text-decoration: none;
-    border-bottom-color: var(--accent);
-  }
-  .social-links,
-  .social-links a {
-    display: flex;
-    color: var(--text-muted);
-    transition: color 0.2s ease;
-  }
-  .social-links a {
-    border-bottom: none !important; 
-    padding: 0; 
-  }
-  .social-links a:hover {
-    color: var(--text-main);
-  }
 
-  @media (max-width: 720px) {
-    nav {
-      flex-direction: column;
-      padding-top: 1.2em;
-      gap: 0.5rem;
-    }
-    h2 {
-      font-size: 1.4em;
-    }
-    .right-menu {
-      gap: 1.5rem; 
-    }
-    nav a {
-      padding: 0.8em 0.2em;
-      font-size: 0.8em;
-    }
-    .social-links {
-      display: none;
-    }
-  } 
-
-  h2 a {
+  h2 a, h2 a.active {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    color: var(--text-main); 
+    color: var(--text-main);
   }
-
 
   .olive-branch {
     display: inline-block;
@@ -124,4 +126,180 @@ import HeaderLink from './HeaderLink.astro';
     -webkit-mask: url('https://i.ibb.co/d427CpcK/olive-branch-1.png') no-repeat center / contain;
     mask: url('https://i.ibb.co/d427CpcK/olive-branch-1.png') no-repeat center / contain;
   }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 0;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem; 
+  }
+
+  /* --- DESKTOP NAV BAR --- */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .desktop-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+  
+  .desktop-nav a:hover,
+  .desktop-nav a.active {
+    color: var(--text-main);
+  }
+
+  .social-links {
+    display: flex;
+    color: var(--text-muted);
+  }
+  .social-links a:hover {
+    color: var(--text-main);
+  }
+
+  /* --- BURGER BUTTON --- */
+  .burger-btn {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    transition: color 0.2s ease;
+  }
+  .burger-btn:hover {
+    color: var(--accent);
+  }
+  .burger-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* --- GREEN TRANSPARENT DROPDOWN --- */
+  .dropdown-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* rgba(44, 87, 69) is the exact RGB equivalent of your #2c5745 Forest Green */
+    background-color: rgba(44, 87, 69, 0.94); 
+    padding: 3rem 1rem 4rem 1rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    box-shadow: 0 12px 30px rgba(46, 41, 16, 0.2);
+    border-top: 1px solid rgba(235, 227, 167, 0.2);
+  }
+
+  .dropdown-menu.open {
+    display: flex;
+  }
+
+  /* Hide mobile links in the drawer on Desktop */
+  .mobile-nav {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Style the links inside the green drawer */
+  .mobile-nav a {
+    color: rgba(235, 227, 167, 0.7); /* Muted cream */
+    text-decoration: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.2s ease;
+  }
+  
+  .mobile-nav a:hover,
+  .mobile-nav a.active {
+    color: var(--bg-color); /* Bright cream */
+  }
+
+  .overlay-socials {
+    color: rgba(235, 227, 167, 0.7);
+    margin-top: 0.5rem;
+  }
+  .overlay-socials a:hover {
+    color: var(--bg-color);
+  }
+
+  .menu-divider {
+    width: 50px;
+    border: none;
+    border-top: 1px dashed rgba(235, 227, 167, 0.3);
+    margin: 2rem 0;
+  }
+
+  /* --- TAGS IN THE DRAWER --- */
+  .tags-heading {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.8em;
+    color: rgba(235, 227, 167, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5em;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    justify-content: center;
+    max-width: 600px;
+  }
+
+  .dropdown-tag-chip {
+    padding: 0.4em 1em;
+    font-size: 0.85em;
+    color: var(--bg-color); /* Cream text */
+    border: 1px solid var(--bg-color); /* Cream border */
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-family: 'Spectral', serif;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .dropdown-tag-chip:hover {
+    background-color: var(--bg-color); /* Fills cream */
+    color: var(--sidebar-bg); /* Text turns green */
+  }
+
+  .tag-count {
+    opacity: 0.7;
+    font-size: 0.9em;
+    margin-left: 2px;
+  }
+
+  /* --- MOBILE RESPONSIVE EXCEPTIONS --- */
+  @media (max-width: 720px) {
+    .desktop-nav {
+      display: none; /* Hide top bar links on phone */
+    }
+    .mobile-nav {
+      display: flex; /* Show links inside the green drawer instead */
+    }
+    h2 {
+      font-size: 1.4em;
+    }
+  } 
 </style>

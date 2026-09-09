@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const tagCounts: Record<string, number> = {};
+allPosts.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  }
+});
+const tags = Object.keys(tagCounts).map(tag => ({ name: tag, count: tagCounts[tag] }));
+---
+
+<div class="desktop-tag-cloud">
+  {tags.map((tag) => (
+    <span class="tag-chip">#{tag.name} <span class="tag-count">({tag.count})</span></span>
+  ))}
+</div>
+
+<style>
+  .desktop-tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    margin: 2em 0;
+  }
+  
+  /* Hide this on phones, because the burger menu handles it now! */
+  @media (max-width: 720px) {
+    .desktop-tag-cloud {
+      display: none;
+    }
+  }
+
+  .tag-chip {
+    padding: 0.4em 1em;
+    font-size: 0.85em;
+    color: var(--sidebar-bg); 
+    border: 1px solid var(--sidebar-bg); 
+    border-radius: 20px; 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Spectral', serif;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .tag-chip:hover {
+    background-color: var(--sidebar-bg);
+    color: var(--bg-color); 
+  }
+  .tag-count {
+    opacity: 0.7;
+    margin-left: 2px;
+  }
+</style>

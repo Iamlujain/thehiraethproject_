@@ -6,6 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import { Image } from 'astro:assets';
+import TagCloud from '../components/TagCloud.astro';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -17,9 +18,13 @@ const posts = (await getCollection('blog')).sort(
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
             /* 1. Grid & Layout */
-            main {
-                width: 960px;
-            }
+main {
+    width: 100%;
+    max-width: 960px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
             ul {
                 display: flex;
                 flex-wrap: wrap;
@@ -65,7 +70,6 @@ const posts = (await getCollection('blog')).sort(
                 text-decoration: none !important; 
                 border: none !important;
             }
-            
           /* 4. Typography Spacing (Primary Resting Colors) */
 		  .title {
                 margin: 0 0 0.2rem 0;
@@ -121,29 +125,35 @@ const posts = (await getCollection('blog')).sort(
             .tag:hover {
                 color: var(--text-main); 
             }
-            
-            /* 7. Mobile View */
+
+
+            /* MOBILE VIEW */
+
             @media (max-width: 720px) {
-                ul {
-                    gap: 0.5em;
-                }
-                ul li {
-                    width: 100%;
-                    text-align: center;
-                }
-                ul li:first-child {
-                    margin-bottom: 0;
-                }
-                ul li:first-child .title {
-                    font-size: 1.563em;
-                }
-                ul li img {
-                    width: 100% !important;
-                height: 100% !important; 
-                 max-height: 250px !important;
-                aspect-ratio: 16 / 9 !important;
-                 object-fit: cover !important;
-}
+    ul {
+      gap: 0.5em;
+      padding: 0; /* Kills the sneaky browser indent */
+      margin: 0;
+    }
+    ul li {
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box; /* Forces it to perfectly fit inside the screen */
+    }
+    ul li:first-child {
+      margin-bottom: 0;
+    }
+    ul li:first-child .title {
+      font-size: 1.563em;
+    }
+    ul li img {
+      width: 100% !important;
+      height: auto !important; 
+      aspect-ratio: 16 / 9 !important;
+      object-fit: cover !important;
+    
+    }
+  }
         </style>
 	</head>
 	<body>
@@ -163,13 +173,13 @@ const posts = (await getCollection('blog')).sort(
     <p class="description">{post.data.description}</p>
 </a>
 	
-	{post.data.tags && (
-		<div class="post-tags">
-			{post.data.tags.map((tag) => (
-				<span class="tag">{tag}</span>
-			))}
-		</div>
-	)}
+{post.data.tags && (
+        <div class="post-tags">
+            {post.data.tags.map((tag) => (
+                <a href={`/tag/${tag}`} class="tag">{tag}</a>
+            ))}
+        </div>
+    )}
 </li>
 						))
 					}

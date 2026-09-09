@@ -1,0 +1,136 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { getCollection } from 'astro:content';
+
+// 1. Tell Astro to generate a page for every unique tag
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  
+  // Extract all unique tags
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags || []).flat())];
+
+  // For every tag, filter the posts and pass them to the page as props
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.data.tags?.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+// 2. Grab the current tag and its posts from the URL
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`#${tag} | ${SITE_TITLE}`} description={`Articles tagged with #${tag}`} />
+    <style>
+        main {
+          width: 100%;
+          max-width: 960px;
+          box-sizing: border-box;
+          margin: 0 auto;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        width: calc(50% - 1rem);
+      }
+      ul li * {
+        text-decoration: none;
+        transition: 0.2s ease;
+      }
+      ul li img {
+        margin-bottom: 0.5rem;
+        border-radius: 12px;
+        width: 100%;
+        height: 100%; 
+        max-height: 250px;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+      ul li a {
+        display: block;
+      }
+      .title {
+        margin: 0;
+        color: var(--text-main);
+        line-height: 1.2;
+        font-family: 'Spectral', serif;
+      }
+      .date {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.9em;
+      }
+      ul li a:hover h4 {
+        color: var(--accent);
+      }
+      @media (max-width: 720px) {
+    ul {
+      gap: 0.5em;
+      padding: 0; 
+      margin: 0;
+    }
+    ul li {
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box; 
+    }
+    ul li img {
+      width: 100% !important;
+      height: auto !important; 
+      max-height: 250px !important;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: cover !important;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h3 style="text-align: center; margin-bottom: 2em; color: var(--text-muted); font-family: 'Spectral', serif;">
+        Articles tagged with <span style="color: var(--accent);">#{tag}</span>
+      </h3>
+      
+      <section>
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+              <a href={`/blog/${post.id}/`}>
+                  <img src={post.data.heroImage} alt="" />
+                  <h4 class="title">{post.data.title}</h4>
+                  <p class="date">
+  {
+    post.data.pubDate.toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+</p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

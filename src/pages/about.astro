@@ -1,13 +1,15 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
 ---
 
 <Layout
-  title="About The Project"
-  description="The story behind The Hiraeth Project."
-  pubDate={new Date('2026-09-07')}
-  heroImage="https://i.ibb.co/your-image-link.jpg">
+	title="About The Project"
+	description="The story behind The Hiraeth Project."
+	pubDate={new Date('2026-09-07')}
+>
+    <div style="text-align: center; margin: 0 0 2rem 0;">
+      <span class="about-emblem"></span>
+    </div>
 <blockquote>
 	<strong>Hiraeth (n.)</strong> — The sense of loss that comes from having been separated from one’s home; missing the feeling of being home, of having a place.
   </blockquote>
@@ -19,4 +21,14 @@ import Layout from '../layouts/BlogPost.astro';
   <p>So comes this space as an archive of my fixations. Where I take apart tracks, movies, characters, and anything in between that intrigues me enough to dive deep into its meaning, till I surface again and share my analysis of it.</p>
   
   <p>I'm Lujain, and analysis is what we'll do.</p>
+  <style>
+  .about-emblem {
+    display: inline-block;
+    width: 100px; 
+    height: 100px;
+    background-color: var(--sidebar-bg); 
+    -webkit-mask: url('https://i.ibb.co/d427CpcK/olive-branch-1.png') no-repeat center / contain;
+    mask: url('https://i.ibb.co/d427CpcK/olive-branch-1.png') no-repeat center / contain;
+  }
+</style>
 </Layout>
